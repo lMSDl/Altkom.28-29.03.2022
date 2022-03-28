@@ -16,7 +16,12 @@ namespace ConsoleApp
         //VOID - radzaj typu zwracanego - oznaczający, że metoda nic nie zwraca
         static void Main(string[] args)
         {
-            Strings();
+            //Strings();
+
+            //utworzenie nowej instancji klasy Numbers za pomocą kontruktowa bezparametrowego i słowa kluczowego new
+            Numbers numbers = new Numbers();
+            //uruchomienie metody z utworzonego obiektu
+            numbers.Run();
         }
 
         private static void Strings()
