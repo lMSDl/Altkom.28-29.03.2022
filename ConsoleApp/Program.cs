@@ -13,6 +13,7 @@ namespace ConsoleApp
         //Modyfikatory dostępu: public, internal, private (dostępna tylko w obrebie klasy), protected (dostępna w obrębie klasy i klas dziedziczących)
         //brak wskazania modyfikatora dostępu = private
         //STATIC - jest to metoda niezależna od instancji klasy (może być wywołana bez potrzeby tworzenia obiektu danej klasy)
+        //VOID - radzaj typu zwracanego - oznaczający, że metoda nic nie zwraca
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
