@@ -16,7 +16,58 @@ namespace ConsoleApp
         //VOID - radzaj typu zwracanego - oznaczający, że metoda nic nie zwraca
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Strings();
+        }
+
+        private static void Strings()
+        {
+            //deklaracja i inicjalizacja zmiennej loklnej typu string o nazwie helloString
+            string helloString = "Hello";
+
+            //deklaracja - określenie, że będziemy używać zmienną typu string o nazwie world
+            string world;
+            //inicjalizacja - pierwsze przypisanie wartości do zmiennej
+            world = "world!";
+            Console.WriteLine(world);
+            //przypisanie wartości
+            world = "world";
+            Console.WriteLine(world);
+
+
+            Console.WriteLine(helloString + world);
+            string helloWorldString = helloString + world;
+            Console.WriteLine(helloWorldString);
+
+            //budowanie stringa z kilku części
+            helloWorldString = helloString + " " + world + "!";
+            Console.WriteLine(helloWorldString);
+
+            //string format
+            helloWorldString = string.Format("{0} {1}!", helloString, world);
+            Console.WriteLine(helloWorldString);
+            string helloWorldStringFormat = "{1} {0}!!!";
+            helloWorldString = string.Format(helloWorldStringFormat, world, helloString);
+            Console.WriteLine(helloWorldString);
+
+            //string interpolowany
+            Console.WriteLine($"{helloString} {world}!");
+            Console.WriteLine("{helloString} {world}!");
+
+            world.Replace("o", "0");
+            Console.WriteLine($"{helloString} {world}!");
+            world = world.Replace("o", "0");
+            world = world.ToUpper();
+            //Console.WriteLine($"{helloString} {world}!");
+            WriteGreetingsToTargetOnConsole(helloString, world);
+            WriteGreetingsToTargetOnConsole("Welcome", world);
+
+            string target = Console.ReadLine();
+            WriteGreetingsToTargetOnConsole(helloString, target);
+        }
+
+        static void WriteGreetingsToTargetOnConsole(string greetings, string target)
+        {
+            Console.WriteLine($"{greetings} {target}!");
         }
     }
 }
