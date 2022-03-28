@@ -21,7 +21,7 @@ namespace ConsoleApp
             //utworzenie nowej instancji klasy Numbers za pomocą kontruktowa bezparametrowego i słowa kluczowego new
             Numbers numbers = new Numbers();
             //uruchomienie metody z utworzonego obiektu
-            numbers.Run();
+            numbers.RunCircleCalculator();
         }
 
         private static void Strings()

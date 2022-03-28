@@ -9,11 +9,11 @@ namespace ConsoleApp
     public class Numbers
     {
         //KONTRUKTOR Z PARAMETREM
-        public Numbers (int initNumber)
+        public Numbers(int initNumber)
         {
         }
         //KONTRUKTOR BEZPARAMETROWY - jeśli nie istnieje żadnen kontruktor, to takie jest tworzony automatycznie
-        public Numbers ()
+        public Numbers()
         {
 
         }
@@ -72,7 +72,7 @@ namespace ConsoleApp
             float floatUserValue;
             //floatUserValue = float.Parse(userValue);
             bool result = float.TryParse(userValue, out floatUserValue);
-            if(result == true)
+            if (result == true)
                 Console.WriteLine(floatUserValue);
 
             //long longUserValue = long.Parse(userValue);
@@ -81,6 +81,60 @@ namespace ConsoleApp
             {
                 Console.WriteLine(longUserValue);
             }
+        }
+
+        public double CaluclateAreaCircle(double r)
+        {
+            var area = Math.PI * Math.Pow(r, 2);
+            //return - zwraca wynik funkcji
+            return area;
+        }
+        public double CaluclateCircumreferenceCircle(double r)
+        {
+            var result = Math.PI * 2 * r;
+            return result;
+        }
+
+        public void RunCircleCalculator()
+        {
+            Console.WriteLine("Podaj promień koła");
+
+            double r = 0;
+            var counter = 3;
+            //pętla for - wykonuje działania w 4 etapach - inicjalizacja -> sprawdzenie warunku -> ciało pętli -> inkrementacja/dekrementacja -> sprawdzenie warunku -> itd....
+            
+            //for(; ; ) - nieskończona pętla for
+            //for(var i = 0;  i < counter; i++/*i = i + 1*/)
+            for (var i = counter; i > 0; i--)
+            {
+                var userValue = Console.ReadLine();
+                //instrukcja warunkowa - if
+
+                //if (double.TryParse(userValue, out r) == false)
+                if (!double.TryParse(userValue, out r))
+                {
+                    //if (i == counter - 1)
+                    if (i == 1)
+                    {
+                        Console.WriteLine("Przepkroczono liczbę prób!");
+                        return;
+                    }
+                    else
+                    {
+                        //Console.WriteLine($"Błędna wartość, spóbuj jeszcze raz! (pozostało prób: {counter - i - 1})");
+                        Console.WriteLine($"Błędna wartość, spóbuj jeszcze raz! (pozostało prób: {i - 1})");
+                    }
+                }
+                else
+                {
+                    //i = 3;
+                    break;
+                }
+            }
+
+            var result = CaluclateAreaCircle(r);
+            Console.WriteLine($"Obwód koła o promieniu {r} to: {result}");
+
         }
     }
 }
