@@ -97,15 +97,65 @@ namespace ConsoleApp
 
         public void RunCircleCalculator()
         {
-            var r = RequestR();
-            //if (r == null)
-            if (!r.HasValue)
-                    return;
+            int option;
+            //for (; ; )
+            //while(true) - nieskończona pętla while
+            //while(option != 0)
+            do
+            {
+                Console.WriteLine("1. Area\n2. Circumreference\n0. Exit");
+                var userValue = Console.ReadLine();
+                option = int.Parse(userValue);
 
+                if (option == 0)
+                    //return; //return przerywa wykonywanie metody (pożegnanie z końca nie wykona się)
+                    //break; //break przerywa pętlę ale nie wychodzi z metody
+                    continue;
 
-            var result = CaluclateAreaCircle(r.Value);
-            Console.WriteLine($"Obwód koła o promieniu {r} to: {result}");
+                var r = RequestR();
+                //if (r == null)
+                if (!r.HasValue)
+                    continue; // przerywa wykonywanie ciała pętli i przechodzi do kolejnej iteracji
 
+                CalculateCircle(option, r);
+            } while (option != 0) ;
+
+            Console.WriteLine("Bye!");
+        }
+
+        private void CalculateCircle(int option, double? r)
+        {
+            /*if (option == 1)
+                        {
+                            var result = CaluclateAreaCircle(r.Value);
+                            Console.WriteLine($"Pole koła o promieniu {r} to: {result}");
+                        }
+                        else if(option == 2)
+                        {
+                            var result = CaluclateCircumreferenceCircle(r.Value);
+                            Console.WriteLine($"Obwód koła o promieniu {r} to: {result}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nie ma takiej opcji!");
+                        }*/
+
+            //switch - alternatywa dla rozbudowanego if-elseif. Porównuje wartość w nawiasie z wartością przy case. 
+            switch (option)
+            {
+                case 1:
+                    var result = CaluclateAreaCircle(r.Value);
+                    Console.WriteLine($"Pole koła o promieniu {r} to: {result}");
+                    break;
+                case 2:
+                    result = CaluclateCircumreferenceCircle(r.Value);
+                    Console.WriteLine($"Obwód koła o promieniu {r} to: {result}");
+                    break;
+                //default - oznacza zachowanie w przypadku niedopasowania do żadnego case
+                default:
+                    Console.WriteLine("Nie ma takiej opcji!");
+                    break;
+            }
         }
 
         /// <summary>
