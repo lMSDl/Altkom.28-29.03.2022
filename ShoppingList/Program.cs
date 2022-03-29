@@ -18,23 +18,22 @@ namespace ShoppingList
                 ShowList();
 
                 Console.WriteLine("\n1. Dodaj   2. Usuń   3. Modyfikuj   0. Wyjście");
-                var option = Console.ReadLine();
-                switch (option)
+                var option = ReadIntFromUser();
+
+                //Enum.TryParse(typeof(Options), option, out var optionAsEnum); //konwersja string na enum
+
+                switch ((Options)option)
                 {
-                    case "dodaj":
-                    case "1":
+                    case Options.Add:
                         AddToList();
                         break;
-                    case "usuń":
-                    case "2":
+                    case Options.Remove:
                         RemoveFromList();
                         break;
-                    case "modyfikuj":
-                    case "3":
+                    case Options.Edit:
                         EditItem();
                         break;
-                    case "wyjście":
-                    case "0":
+                    case Options.Exit:
                         return;
                     default:
                         break;
