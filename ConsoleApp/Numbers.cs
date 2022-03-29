@@ -99,18 +99,34 @@ namespace ConsoleApp
         {
             int option;
             //for (; ; )
-            //while(true) - nieskończona pętla while
+            while(true) //- nieskończona pętla while
             //while(option != 0)
-            do
+            //do
             {
                 Console.WriteLine("1. Area\n2. Circumreference\n0. Exit");
                 var userValue = Console.ReadLine();
-                option = int.Parse(userValue);
+                //blok try-catch  - służy do przechwytywania wyjątków i ich obsługi
+                try
+                {
+                    option = int.Parse(userValue);
+
+                    //throw new Exception("Coś poszło nie tak"); //throw - rzucanie obiektu wyjątku
+                }
+                //możemy przechwytywać wyjątki konkretnej klasy
+                catch(FormatException exception)
+                {
+                    Console.WriteLine(exception.Message);
+                    continue;
+                }
+                catch(Exception exception)
+                {
+                    continue;
+                }
 
                 if (option == 0)
                     //return; //return przerywa wykonywanie metody (pożegnanie z końca nie wykona się)
-                    //break; //break przerywa pętlę ale nie wychodzi z metody
-                    continue;
+                    break; //break przerywa pętlę ale nie wychodzi z metody
+                    //continue;
 
                 var r = RequestR();
                 //if (r == null)
@@ -118,7 +134,7 @@ namespace ConsoleApp
                     continue; // przerywa wykonywanie ciała pętli i przechodzi do kolejnej iteracji
 
                 CalculateCircle(option, r);
-            } while (option != 0) ;
+            } //while (option != 0) ;
 
             Console.WriteLine("Bye!");
         }
