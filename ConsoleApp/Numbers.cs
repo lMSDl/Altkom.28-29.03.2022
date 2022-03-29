@@ -97,44 +97,59 @@ namespace ConsoleApp
 
         public void RunCircleCalculator()
         {
+            var r = RequestR();
+            //if (r == null)
+            if (!r.HasValue)
+                    return;
+
+
+            var result = CaluclateAreaCircle(r.Value);
+            Console.WriteLine($"Obwód koła o promieniu {r} to: {result}");
+
+        }
+
+        /// <summary>
+        /// Metoda pobierająca promień od użytkownika
+        /// </summary>
+        /// <returns>promień koła lub null jeśli nie udało się pobrać wartości</returns>
+        private double? RequestR(int counter = 3) //counter - parametr opcjonalny (z wartością domyślną). takie parametry muszą być zdefiniowane na końcu ciągu parametrów
+        {
             Console.WriteLine("Podaj promień koła");
 
             double r = 0;
-            var counter = 3;
             //pętla for - wykonuje działania w 4 etapach - inicjalizacja -> sprawdzenie warunku -> ciało pętli -> inkrementacja/dekrementacja -> sprawdzenie warunku -> itd....
-            
+
             //for(; ; ) - nieskończona pętla for
-            //for(var i = 0;  i < counter; i++/*i = i + 1*/)
+            //[*] for(var i = 0;  i < counter; i++/*i = i + 1*/)
             for (var i = counter; i > 0; i--)
             {
                 var userValue = Console.ReadLine();
                 //instrukcja warunkowa - if
 
-                //if (double.TryParse(userValue, out r) == false)
+                //[*] if (double.TryParse(userValue, out r) == false)
                 if (!double.TryParse(userValue, out r))
                 {
-                    //if (i == counter - 1)
+                    //[*] if (i == counter - 1)
                     if (i == 1)
                     {
                         Console.WriteLine("Przepkroczono liczbę prób!");
-                        return;
+                        return null;
                     }
                     else
                     {
-                        //Console.WriteLine($"Błędna wartość, spóbuj jeszcze raz! (pozostało prób: {counter - i - 1})");
+                        //[*] Console.WriteLine($"Błędna wartość, spóbuj jeszcze raz! (pozostało prób: {counter - i - 1})");
                         Console.WriteLine($"Błędna wartość, spóbuj jeszcze raz! (pozostało prób: {i - 1})");
                     }
                 }
                 else
                 {
-                    //i = 3;
+                    //[*] i = 3;
                     break;
                 }
             }
 
-            var result = CaluclateAreaCircle(r);
-            Console.WriteLine($"Obwód koła o promieniu {r} to: {result}");
-
+            //return - wychodzi z funkcji i służy do zwracania wartości
+            return r;
         }
     }
 }
