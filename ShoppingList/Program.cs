@@ -59,6 +59,7 @@ namespace ShoppingList
 
         private static void ShowWarning(string warning)
         {
+            warning = Figgle.FiggleFonts.Standard.Render(warning);
             Console.WriteLine(warning);
             _ = Console.ReadKey();
         }
